@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.ticketfast.Adapter.AdapterEvents;
 import com.example.ticketfast.Model.Event;
@@ -62,11 +63,16 @@ public class EventsActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Event>>() {
             @Override
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-                listaEventos = response.body();
-                for(Event event : listaEventos){
-                    listaEventos.add(event);
+                int code = response.code();
+                if (code == 200) {
+                    listaEventos = response.body();
+                    for (Event event : listaEventos) {
+                        listaEventos.add(event);
+                    }
+                    Log.d("xxxxxxxxxxxxxxxxxxxx", "Bom");
+                }else{
+                    Toast.makeText(getApplicationContext(),"Erro: " + String.valueOf(code),Toast.LENGTH_SHORT).show();
                 }
-                Log.d("xxxxxxxxxxxxxxxxxxxx","Bom");
             }
 
             @Override

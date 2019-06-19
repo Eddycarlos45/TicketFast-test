@@ -17,7 +17,7 @@ public interface ApiService {
     Call<List<Event>> listEvents();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://private-edc1c-ticketfast.apiary-mock.com/")
+                .baseUrl("http://private-edc1c-ticketfast.apiary-mock.com")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
