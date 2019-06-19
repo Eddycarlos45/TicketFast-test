@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "254114570074",
+    "firebase_url": "https://ticketfast-e6c7b.firebaseio.com",
+    "project_id": "ticketfast-e6c7b",
+    "storage_bucket": "ticketfast-e6c7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254114570074:android:d675425d46823983",
+        "android_client_info": {
+          "package_name": "com.example.ticketfast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254114570074-673glat84ehf50e1viah3ong3h2gr0h4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ticketfast",
+            "certificate_hash": "51abce14f84b26834356feabca0884625f07287e"
+          }
+        },
+        {
+          "client_id": "254114570074-3to6abqmed9ovk9kfql52gfpruorerpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA791Hn_VgYYJWO4r0ud3wCS-mu1AWE1Kg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254114570074-3to6abqmed9ovk9kfql52gfpruorerpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
