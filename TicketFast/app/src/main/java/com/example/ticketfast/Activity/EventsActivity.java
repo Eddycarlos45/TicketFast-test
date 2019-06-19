@@ -9,14 +9,12 @@ import android.util.Log;
 
 import com.example.ticketfast.Adapter.AdapterEvents;
 import com.example.ticketfast.Model.Event;
-import com.example.ticketfast.Model.Service.ApiService;
+import com.example.ticketfast.Service.ApiService;
 import com.example.ticketfast.R;
 
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +28,6 @@ public class EventsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Event> listaEventos = new ArrayList<>();
     private  Retrofit retrofit;
-    private ApiService api;
 
 
     @Override
@@ -39,7 +36,7 @@ public class EventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events);
 
 
-
+        
         //Definir orientação como portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -48,7 +45,7 @@ public class EventsActivity extends AppCompatActivity {
 
 
         //Congigurar Adapter
-        listarEventos();
+        listar();
         AdapterEvents adapterMensagens = new AdapterEvents(listaEventos);
 
 
@@ -59,28 +56,25 @@ public class EventsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapterMensagens);
 
     }
-
-    public void listarEventos() {
-
-        this.retrofit = new Retrofit.Builder()
-                .baseUrl("http://private-edc1c-ticketfast.apiary-mock.com")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build();
-
-        api = retrofit.create(ApiService.class);
-        api.listEvents().enqueue(new Callback<List<Event>>() {
+    public void listar() {
+        Call<List<Event>> call = new RetrofitConfig().getApiService().listEvents();
+        call.enqueue(new Callback<List<Event>>() {
             @Override
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-            listaEventos = response.body();
-                Log.d("=======",response.body().toString());
+                listaEventos = response.body();
+                for(Event event : listaEventos){
+                    listaEventos.add(event);
+                }
+
+                Log.d("---------","DEU CERTO");
             }
 
             @Override
             public void onFailure(Call<List<Event>> call, Throwable t) {
-                Log.d("xxxxxxxxx",t.toString());
+                Log.d("---------",t.toString());
             }
         });
-    }
 
+    }
 
 }
