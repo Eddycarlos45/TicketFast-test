@@ -36,7 +36,7 @@ public class EventsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events);
 
 
-        
+
         //Definir orientação como portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -57,7 +57,8 @@ public class EventsActivity extends AppCompatActivity {
 
     }
     public void listar() {
-        Call<List<Event>> call = new RetrofitConfig().getApiService().listEvents();
+       ApiService apiService  = ApiService.retrofit.create(ApiService.class);
+        final Call<List<Event>> call = apiService.listEvents();
         call.enqueue(new Callback<List<Event>>() {
             @Override
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
@@ -65,13 +66,12 @@ public class EventsActivity extends AppCompatActivity {
                 for(Event event : listaEventos){
                     listaEventos.add(event);
                 }
-
-                Log.d("---------","DEU CERTO");
+                Log.d("xxxxxxxxxxxxxxxxxxxx","Bom");
             }
 
             @Override
             public void onFailure(Call<List<Event>> call, Throwable t) {
-                Log.d("---------",t.toString());
+            Log.d("xxxxxxxxxxxxxxxxxxxx","Ruim");
             }
         });
 
