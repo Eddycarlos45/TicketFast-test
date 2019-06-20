@@ -1,17 +1,23 @@
 package com.example.ticketfast.Activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.ticketfast.Adapter.AdapterEvents;
 import com.example.ticketfast.Model.Event;
 import com.example.ticketfast.Service.ApiService;
 import com.example.ticketfast.R;
+import com.example.ticketfast.Util.RecyclerItemClickListener;
 
 
 import java.util.ArrayList;
@@ -42,21 +48,61 @@ public class EventsActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        recyclerView = findViewById(R.id.recyclerMensagens);
+        recyclerView = findViewById(R.id.recyclerEvent);
 
 
         //Congigurar Adapter
-        listar();
-        AdapterEvents adapterMensagens = new AdapterEvents(listaEventos);
+        listaTest();
+        AdapterEvents adapter = new AdapterEvents(listaEventos,this);
 
 
         //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterMensagens);
+        recyclerView.setAdapter(adapter);
+
+        //Evento de Click
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+
+                                Intent intent = new Intent(EventsActivity.this, EventDesc.class);
+
+
+                                intent.putExtra("name", listaEventos.get(position).getName());
+                                intent.putExtra("category", listaEventos.get(position).getCategoria());
+                                intent.putExtra("local", listaEventos.get(position).getLocal());
+                                intent.putExtra("image", listaEventos.get(position).getImage());
+                                intent.putExtra("date", listaEventos.get(position).getDate());
+
+
+                                startActivity(intent);
+
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
 
     }
+
+
+
     public void listar() {
        ApiService apiService  = ApiService.retrofit.create(ApiService.class);
         final Call<List<Event>> call = apiService.listEvents();
@@ -81,6 +127,11 @@ public class EventsActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void listaTest(){
+      Event e = new Event("https://static3.tcdn.com.br/img/img_prod/224611/raca_negra_e_amigos_ii_via_brasil_12_04_19_limeira_sp_19256_1_20190212234310.jpg",
+              "Raça Negra","20/12/2019","Aguai/Sp:AguaiHall","Musica");
+        this.listaEventos.add(e);
     }
 
 }

@@ -23,7 +23,7 @@ public class AdapterEvents  extends RecyclerView.Adapter<AdapterEvents.MyViewHol
 
 
 
-    public AdapterEvents(List<Event> lista) {
+    public AdapterEvents(List<Event> lista, Context context) {
         this.listaEventos = lista;
         this.context = context;
     }
@@ -43,7 +43,6 @@ public class AdapterEvents  extends RecyclerView.Adapter<AdapterEvents.MyViewHol
         Glide.with(context).load(listaEventos.get(position).getImage()).into(imageView);
         holder.desc.setText(evento.getName());
 
-
     }
 
     @Override
@@ -60,7 +59,7 @@ public class AdapterEvents  extends RecyclerView.Adapter<AdapterEvents.MyViewHol
 
             super(itemView);
 
-            image = itemView.findViewById(R.id.imageView);
+            image = itemView.findViewById(R.id.image_View);
             desc = itemView.findViewById(R.id.text_desc);
         }
     }
