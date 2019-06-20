@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.os.TestLooperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ public class EventDesc extends AppCompatActivity {
 
     private ImageView image;
     private TextView textName, textCategory, textLocal, textDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

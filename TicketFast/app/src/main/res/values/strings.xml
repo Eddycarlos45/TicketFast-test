@@ -13,4 +13,6 @@
     <string name="date">date</string>
     <string name="local">local</string>
     <string name="buy">Comprar</string>
+    <string name="meus_ingressos">Meus Ingressos</string>
+    <string name="sobre">Sobre</string>
 </resources>

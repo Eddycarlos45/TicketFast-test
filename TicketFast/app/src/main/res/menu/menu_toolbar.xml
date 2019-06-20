@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/meus_ingressos"
+        android:id="@+id/ticket_menu"
+        app:showAsAction="always"
+        />
+
+    <item android:title="@string/sobre"
+        android:id="@+id/about_menu"/>
+
+    <item android:title="Configuração"
+        android:id="@+id/config_menu"/>
+
+</menu>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +38,27 @@ public class EventsActivity extends AppCompatActivity {
     private List<Event> listaEventos = new ArrayList<>();
     private  Retrofit retrofit;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.ticket_menu:{
+
+            Intent intent = new Intent(EventsActivity.this,TicketActivity.class);
+            startActivity(intent);
+            break;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +155,11 @@ public class EventsActivity extends AppCompatActivity {
       Event e = new Event("https://static3.tcdn.com.br/img/img_prod/224611/raca_negra_e_amigos_ii_via_brasil_12_04_19_limeira_sp_19256_1_20190212234310.jpg",
               "Raça Negra","20/12/2019","Aguai/Sp:AguaiHall","Musica");
         this.listaEventos.add(e);
+
+        e = new Event("https://www.novaimprensa.com/wp-content/uploads/2019/02/Thiago-Ventura-Caraguatatuba.jpg",
+                "Thiago Ventura","20/03/2019","Campinas/Sp:CampinasClub","Comédia");
+        this.listaEventos.add(e);
+
     }
 
 }
