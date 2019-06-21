@@ -15,4 +15,18 @@
     <string name="buy">Comprar</string>
     <string name="meus_ingressos">Meus Ingressos</string>
     <string name="sobre">Sobre</string>
+    <string name="cart_o_visa">Cartão VISA</string>
+    <string name="cart_o_master_card">Cartão Master Card</string>
+    <string name="n_mero_do_cart_o">Número do cartão</string>
+    <string name="_4485203648101323">4485203648101323</string>
+    <string name="nome_do_propriet_rio_cart_o">Nome do proprietário cartão</string>
+    <string name="edson_santana">Edson Santana</string>
+    <string name="m_s">Mês</string>
+    <string name="_01">01</string>
+    <string name="ano">Ano</string>
+    <string name="_2023">2023</string>
+    <string name="parcelas">Parcelas</string>
+    <string name="cvv">CVV</string>
+    <string name="_253">253</string>
+    <string name="_2">2</string>
 </resources>

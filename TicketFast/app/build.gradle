@@ -39,9 +39,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     //Biblioteca Jackson
     implementation 'com.squareup.retrofit2:converter-jackson:2.3.0'
+    //MDDialog
+    implementation 'cn.carbs.android:MDDialog:1.0.0'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 repositories {
     mavenCentral()
 }

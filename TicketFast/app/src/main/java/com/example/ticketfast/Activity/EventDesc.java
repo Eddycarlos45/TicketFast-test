@@ -1,10 +1,10 @@
 package com.example.ticketfast.Activity;
 
 import android.content.pm.ActivityInfo;
-import android.os.TestLooperManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +15,7 @@ public class EventDesc extends AppCompatActivity {
 
     private ImageView image;
     private TextView textName, textCategory, textLocal, textDate;
+    private Button btn_buy;
 
 
     @Override
@@ -30,15 +31,23 @@ public class EventDesc extends AppCompatActivity {
         textDate = findViewById(R.id.text_date);
         textLocal = findViewById(R.id.text_local);
         textCategory = findViewById(R.id.text_category);
+        btn_buy = findViewById(R.id.btn_buy);
 
         if (getIntent() != null) {
 
             Glide.with(this).load(getIntent().getStringExtra("image")).into(image);
-            textName.setText("Titulo: "+getIntent().getStringExtra("name"));
-            textDate.setText("Data: "+getIntent().getStringExtra("date"));
-            textLocal.setText("Local: "+getIntent().getStringExtra("local"));
-            textCategory.setText("Categoria: "+getIntent().getStringExtra("category"));
+            textName.setText("Titulo: " + getIntent().getStringExtra("name"));
+            textDate.setText("Data: " + getIntent().getStringExtra("date"));
+            textLocal.setText("Local: " + getIntent().getStringExtra("local"));
+            textCategory.setText("Categoria: " + getIntent().getStringExtra("category"));
 
         }
+        btn_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
+
 }
