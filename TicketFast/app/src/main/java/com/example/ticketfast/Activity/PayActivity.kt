@@ -37,7 +37,7 @@ class PayActivity : AppCompatActivity() {
             cred.error = "Erro"
             Toast.makeText(applicationContext, "Compra Finalizada", Toast.LENGTH_LONG).show()
             SalvarIngresso(
-                    intent.getStringExtra("name"),
+                    intent.getStringExtra("titulo"),
                     intent.getStringExtra("date"),
                     intent.getStringExtra("local")
             )

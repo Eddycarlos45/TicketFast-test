@@ -2,16 +2,14 @@ package com.example.ticketfast.Activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.icu.text.UnicodeSetSpanner;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ticketfast.R;
@@ -22,8 +20,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -64,33 +60,28 @@ public class RegisterActivity extends AppCompatActivity {
                 String senha = senhaedt.getText().toString();
                 String confSenha = confSenhaedt.getText().toString();
 
-                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha)&& !TextUtils.isEmpty(confSenha) && senha.equals(confSenha)) {
+                    if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(senha)&& !TextUtils.isEmpty(confSenha) && senha.equals(confSenha)) {
 
-                    mAuth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull final Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                final String user_id = mAuth.getCurrentUser().getUid();
-                                String token_id = FirebaseInstanceId.getInstance().getToken();
+                        mAuth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull final Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    //POST do usuario para API
+                                    Toast.makeText(getApplicationContext(),"Cadastrado com sucesso",Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Error:" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
-                                Map<String, Object> userMap = new HashMap<>();
-                                userMap.put("nome", name);
-                                userMap.put("token_id", token_id);
-
-                                //POST
-                                Toast.makeText(getApplicationContext(), "GGGGGGGG", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Error:" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
+                                }
                             }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Error:" + e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                } else {
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getApplicationContext(), "Error:" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
                     validarCampos();
                 }
             }

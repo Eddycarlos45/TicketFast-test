@@ -38,14 +38,14 @@ public class EventsActivity extends AppCompatActivity {
     private List<Event> listaEventos = new ArrayList<>();
     private  Retrofit retrofit;
 
-
+    //Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_toolbar,menu);
         return true;
 
     }
-
+    //Menu Options
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
