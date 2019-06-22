@@ -29,4 +29,8 @@
     <string name="cvv">CVV</string>
     <string name="_253">253</string>
     <string name="_2">2</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="price">preço</string>
+    <string name="valor_a_pagar">Valor a pagar</string>
+    <string name="Titulo">titulo</string>
 </resources>

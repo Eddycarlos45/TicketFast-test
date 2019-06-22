@@ -7,7 +7,16 @@ public class Event {
     private  String name;
     private  String date;
     private  String local;
-    private String categoria;
+    private String category;
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public String getDate() {
         return date;
@@ -26,11 +35,11 @@ public class Event {
     }
 
     public String getCategoria() {
-        return categoria;
+        return category;
     }
 
     public void setCategoria(String categoria) {
-        this.categoria = categoria;
+        this.category = categoria;
     }
 
     public String getImage() {
@@ -50,15 +59,18 @@ public class Event {
     }
 
 
+
+
     public Event(){
 
     }
 
-    public Event(String image, String name, String date, String local, String categoria) {
+    public Event(String image, String name, String date, String local, String categoria,String price) {
         this.image = image;
         this.name = name;
         this.date = date;
         this.local = local;
-        this.categoria = categoria;
+        this.category = categoria;
+        this.price = price;
     }
 }

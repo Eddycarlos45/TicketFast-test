@@ -102,6 +102,7 @@ public class EventsActivity extends AppCompatActivity {
                                 intent.putExtra("local", listaEventos.get(position).getLocal());
                                 intent.putExtra("image", listaEventos.get(position).getImage());
                                 intent.putExtra("date", listaEventos.get(position).getDate());
+                                intent.putExtra("price",listaEventos.get(position).getPrice());
 
 
                                 startActivity(intent);
@@ -146,18 +147,18 @@ public class EventsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Event>> call, Throwable t) {
-            Log.d("xxxxxxxxxxxxxxxxxxxx","Ruim");
+            Log.d("xxxxxxxxxxxxxxxxxxxx", t.getMessage());
             }
         });
 
     }
     public void listaTest(){
       Event e = new Event("https://static3.tcdn.com.br/img/img_prod/224611/raca_negra_e_amigos_ii_via_brasil_12_04_19_limeira_sp_19256_1_20190212234310.jpg",
-              "Raça Negra","20/12/2019","Aguai/Sp:AguaiHall","Musica");
+              "Raça Negra","20/12/2019","Aguai/Sp:AguaiHall","Musica","200,00");
         this.listaEventos.add(e);
 
         e = new Event("https://www.novaimprensa.com/wp-content/uploads/2019/02/Thiago-Ventura-Caraguatatuba.jpg",
-                "Thiago Ventura","20/03/2019","Campinas/Sp:CampinasClub","Comédia");
+                "Thiago Ventura","20/03/2019","Campinas/Sp:CampinasClub","Comédia","150,00");
         this.listaEventos.add(e);
 
     }
