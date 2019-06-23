@@ -2,23 +2,34 @@ package com.example.ticketfast.Activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.PostProcessor;
 import android.icu.text.UnicodeSetSpanner;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ticketfast.Model.Event;
+import com.example.ticketfast.Model.User;
 import com.example.ticketfast.R;
+import com.example.ticketfast.Service.ApiService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -87,6 +98,26 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+  /*  private void createUser() {
+        User user = new User(1,"Edson","edsoncarlos33@","12345");
+        ApiService apiService = ApiService.retrofit.create(ApiService.class);
+       final Call<User> call = apiService.createUser(user);
+       call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (!response.isSuccessful()){
+                    Log.d("xxxxxxxxxxx","Certo");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+    }*/
 
     private void validarCampos() {
         if (nomeedt.getText().toString().isEmpty()) {
