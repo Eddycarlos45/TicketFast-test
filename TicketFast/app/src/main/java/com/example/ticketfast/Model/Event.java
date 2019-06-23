@@ -3,12 +3,20 @@ package com.example.ticketfast.Model;
 public class Event {
 
 
-    private  String image;
     private  String name;
+    private  String image;
     private  String date;
     private  String local;
     private String category;
     private String price;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public String getPrice() {
         return price;
@@ -34,20 +42,12 @@ public class Event {
         this.local = local;
     }
 
-    public String getCategoria() {
-        return category;
-    }
-
-    public void setCategoria(String categoria) {
-        this.category = categoria;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
-        image = image;
+        this.image = image;
     }
 
     public String getName() {
@@ -65,12 +65,12 @@ public class Event {
 
     }
 
-    public Event(String image, String name, String date, String local, String categoria,String price) {
-        this.image = image;
+    public Event(String image, String name, String date, String local, String category,String price) {
         this.name = name;
+        this.image = image;
         this.date = date;
         this.local = local;
-        this.category = categoria;
+        this.category = category;
         this.price = price;
     }
 }

@@ -24,6 +24,7 @@ class PayActivity : AppCompatActivity() {
 
         btn_final.setOnClickListener(View.OnClickListener {
             //Validar os campos
+            //Passar os dados para Api de validação
             val cred = CreditCard()
             cred.name = name.text.toString()
             cred.cvv = cvv.text.toString()
