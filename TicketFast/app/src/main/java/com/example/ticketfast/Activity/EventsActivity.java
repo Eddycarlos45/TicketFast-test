@@ -33,10 +33,13 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class EventsActivity extends AppCompatActivity {
 
-
     private RecyclerView recyclerView;
     private List<Event> listaEventos = new ArrayList<>();
     private Retrofit retrofit;
+    AdapterEvents adapter;
+
+
+
 
     //Menu
     @Override
@@ -61,22 +64,21 @@ public class EventsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
+        listar();
+        recyclerView = findViewById(R.id.recyclerEvent);
 
         //Definir orientação como portrait
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        recyclerView = findViewById(R.id.recyclerEvent);
-
-
         //Congigurar Adapter
-        listar();
-        AdapterEvents adapter = new AdapterEvents(listaEventos, this);
+            adapter = new  AdapterEvents( this);
 
 
         //Configurar RecyclerView
@@ -134,7 +136,7 @@ public class EventsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
                 int code = response.code();
                 if (code == 200) {
-                    List<Event> lista = new ArrayList<>();
+                    List<Event> lista;
                     lista = response.body();
 
                     for (Event event : lista) {
@@ -147,9 +149,9 @@ public class EventsActivity extends AppCompatActivity {
                         e.setDate(event.getDate());
                         e.setCategory(event.getCategory());
                         listaEventos.add(e);
-
+                        Log.d("xxxxx",event.getImage());
                     }
-
+                    adapter.setData(listaEventos);
                 } else {
                     Toast.makeText(getApplicationContext(), "Erro: " + String.valueOf(code), Toast.LENGTH_SHORT).show();
                 }

@@ -9,6 +9,8 @@ import com.example.ticketfast.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void sendToEvent () {
         Intent eventIntent = new Intent(MainActivity.this, EventsActivity.class);
+
         startActivity(eventIntent);
         finish();
     }

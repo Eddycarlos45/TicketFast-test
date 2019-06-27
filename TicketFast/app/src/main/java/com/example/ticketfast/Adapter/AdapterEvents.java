@@ -12,19 +12,19 @@ import com.bumptech.glide.Glide;
 import com.example.ticketfast.Model.Event;
 import com.example.ticketfast.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Retrofit;
 
 public class AdapterEvents  extends RecyclerView.Adapter<AdapterEvents.MyViewHolder> {
 
-    private List<Event> listaEventos;
+    private List<Event> listaEventos = new ArrayList<>();
     private Context context;
 
 
 
-    public AdapterEvents(List<Event> lista, Context context) {
-        this.listaEventos = lista;
+    public AdapterEvents(Context context) {
         this.context = context;
     }
 
@@ -63,4 +63,9 @@ public class AdapterEvents  extends RecyclerView.Adapter<AdapterEvents.MyViewHol
             desc = itemView.findViewById(R.id.text_desc);
         }
     }
+    public void setData(List<Event> list){
+        this.listaEventos = list;
+        notifyDataSetChanged();
+    }
+
 }

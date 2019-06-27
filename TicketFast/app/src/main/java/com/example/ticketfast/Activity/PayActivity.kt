@@ -3,14 +3,12 @@ package com.example.ticketfast.Activity
 import android.content.ContentValues
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.ticketfast.Model.CreditCard
 import com.example.ticketfast.R
 import kotlinx.android.synthetic.main.activity_pay.*
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class PayActivity : AppCompatActivity() {
 
@@ -20,7 +18,7 @@ class PayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pay)
 
 
-        text_value.setText(intent.getStringExtra("price"))
+        text_value.text = intent.getStringExtra("price")
 
         btn_final.setOnClickListener(View.OnClickListener {
             //Validar os campos
@@ -36,7 +34,7 @@ class PayActivity : AppCompatActivity() {
             //Post cred para a Api do sistema
             //Se não
             cred.error = "Erro"
-            Toast.makeText(applicationContext, "Compra Finalizada", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Compra Finalizada", Toast.LENGTH_LONG).show()
             SalvarIngresso(
                     intent.getStringExtra("titulo"),
                     intent.getStringExtra("date"),
